@@ -67,7 +67,7 @@ def sanitize_filename(filename: str) -> str:
 
 
 @app.post("/upload-pdf/")
-async def upload_pdf(qr_code_url: str, club_name: str, logo_url: str):
+async def upload_pdf(qr_code_url: str = Form(...), club_name: str = Form(...), logo_url: str = Form(...)):
     try:
         qr_maker = QRMaker(qr_code_url)
         qr_image = qr_maker.create_qr()
